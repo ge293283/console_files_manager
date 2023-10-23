@@ -47,8 +47,14 @@
 4. Можно сдать задание в виде pull request:
 5. Посмотреть разбор дз по функциям, если требуется, то сделать работу надо ошибками.1. Создать новый проект ""Консольный файловый менеджер"
 """
-from os_functions import new_folder, del_ff
+import platform
+from os_functions import new_folder, del_ff, copy_ff, ls_only_dir_or_file_print, next_work_dir
 from victory import victory as vi
+
+
+def end_print():
+    print()
+
 
 # Основное меню
 while True:
@@ -69,20 +75,52 @@ while True:
     # создать папку
     if choice == '1':
         new_folder()
+        end_print()
     # удалить (файл/папку)
     elif choice == '2':
         del_ff()
+        end_print()
     # копировать (файл/папку)
     elif choice == '3':
-        history_print(user_history)
+        copy_ff()
+        end_print()
+    # 4. просмотр содержимого рабочей директории
+    elif choice == '4':
+        ls_only_dir_or_file_print()
+        end_print()
+    # 5. посмотреть только папки
+    elif choice == '5':
+        ls_only_dir_or_file_print('d')
+        end_print()
+    # 6. посмотреть только файлы
+    elif choice == '6':
+        ls_only_dir_or_file_print('f')
+        end_print()
+    # 7. просмотр информации об операционной системе
+    elif choice == '7':
+        system_info = platform.uname()
+        print(system_info)
+        end_print()
+    # 8 вывод информации о создателе программы
+    elif choice == '8':
+        print("https://github.com/ge293283")
+        end_print()
     # играть в викторину
     elif choice == '9':
         vi()
+        end_print()
     # мой банковский счет
     elif choice == '10':
         import use_functions
+        end_print()
+    # смена рабочей директории
+    elif choice == '11':
+        next_work_dir()
+        end_print()
     # выход
     elif choice == '12':
+        end_print()
         break
     else:
         print('Неверный пункт меню')
+        end_print()
